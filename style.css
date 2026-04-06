@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=VT323&display=swap');
+ 
+ *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(90deg,#45d09d,#2f946c,#247253,#1a503a);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabuleiro{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 40%;
+   box-shadow: 0.5px 0.5px 4px rgba(255, 255, 255, 0.473);
+}
+
+.tabuleiro.o .celula.celula:not(.x):not(.o):hover::after,
+.tabuleiro.o .celula.celula:not(.x):not(.o):hover::before{
+    background-color: rgba(250, 235, 215, 0.24);
+}
+.tabuleiro.x .celula.celula:not(.x):not(.o):hover::after,
+.tabuleiro.x .celula.celula:not(.x):not(.o):hover::before
+{
+    background-color: #e03e1988;
+}
+
+.celula{
+    width: 33.33%;
+    height: 33.33%;
+    padding: 0px;
+    margin: 0px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.celula.o, .celula.x{
+    cursor: not-allowed;
+}
+
+
+.celula:nth-child(3),
+.celula:nth-child(6),
+.celula:nth-child(9){
+    border-right: none;
+}
+
+.celula:nth-child(7),
+.celula:nth-child(8),
+.celula:nth-child(9){
+    border-bottom: none;
+}
+
+
+
+/* x nas celulas com .x */
+.celula.x::before, .celula.x::after {
+    content: "";
+    height: 12%;
+    width: 80%;
+    background-color: #E03E19;
+    position: absolute;
+    box-shadow: 1px 1px 2px #e03e1988;
+    border-radius: 8px;
+
+    /* ::before e ::after são usados para adicionar conteúdo visual antes ou depois do conteúdo real de um elemento.
+    No seu código, são usados para criar as linhas do "X" dentro da célula, sem a necessidade de adicionar elementos HTML extras. */
+
+    /* Os pseudo-elementos ::before e ::after permitem adicionar conteúdo visual sem modificar o HTML. No seu caso:
+
+    ::before cria uma linha do "X" (rotacionada em 45 graus).
+    ::after cria a outra linha (rotacionada em -45 graus).
+    Eles ajudam a formar o "X" dentro da célula, mantendo o código HTML limpo, sem precisar de elementos extras como <div> ou <span>. */
+}
+
+/* adiciona a rotação ao x */
+.celula.x::before {
+    transform: rotate(45deg);
+}
+
+.celula.x::after {
+    transform: rotate(-45deg);
+}
+
+/* efeito hover que exibe um x */
+.tabuleiro.x .celula:not(.x):not(.o):hover::before,.tabuleiro.x .celula:not(.x):not(.o):hover::after {
+    content: "";
+    height: 12%;
+    width: 80%;
+    background-color: #E03E19;
+    position: absolute;
+    box-shadow: 1px 1px 2px #e03e1988;
+    border-radius: 8px;
+    transform: rotate(45deg); /* Formato da linha do "X" */
+}
+
+.tabuleiro.x .celula:not(.x):not(.o):hover::before {
+   transform: rotate(45deg);
+}
+.tabuleiro.x .celula:not(.x):not(.o):hover::after {
+   transform: rotate(-45deg);
+}
+
+
+/* adiciona um o nas classes .o */
+.celula.o::after,.celula.o::before{
+    content:"" ;
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    background-color: antiquewhite;
+    border-radius: 50%;
+}
+ /* efeito hoover que exibe um o  */
+.tabuleiro.o .celula:not(.x):not(.o):hover::after,.tabuleiro.o .celula:not(.x):not(.o):hover::before{
+    content:"" ;
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    background-color: antiquewhite;
+    border-radius: 50%;
+}
+
+.mensagem{
+    display: none;
+    flex-flow:row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    padding: 10px;
+}
+
+.mensagem > p{
+    width: 80%;
+    color: white;
+    font-size: 3.5em;
+    font-family:VT323;
+    text-align: center;
+    text-shadow: 1px 1px 2px white;
+}
+
+.mensagem > button{
+    padding: 8px;
+    margin-top: 20px;
+    font-size: 1.0em;
+    border:2px solid white;
+    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.63);
+    border-radius: 4px;
+    background: linear-gradient(to right, #45d09d,#1a503a);
+    
+    color: white;
+}
+
+.mostrarMsg {
+    display: flex;
+}
