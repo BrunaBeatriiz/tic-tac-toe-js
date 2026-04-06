@@ -56,6 +56,8 @@ cd tic-tac-toe-js
 # Execute o projeto
 Abra o arquivo index.html no navegador
 
+```
+
 ---
 
 ## 🔗 Demo
