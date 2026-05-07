@@ -7,7 +7,7 @@
 }
 
 body{
-    background: linear-gradient(90deg,#45d09d,#2f946c,#247253,#1a503a);
+    background: linear-gradient(135deg, #ecfdf5,#d1fae5,#a7f3d0);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -16,24 +16,39 @@ body{
     align-items: center;
 }
 
+
+
+h1{
+     font-family:VT323;
+    color: #065f46;
+    font-size: 2.5rem;
+    margin-bottom: 80px;
+}
+
 .tabuleiro{
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    width: 60%;
-    height: 40%;
-   box-shadow: 0.5px 0.5px 4px rgba(255, 255, 255, 0.473);
+    width: 320px;
+    height: 320px;
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter:blur(8px) ;
+
+    border-radius: 20px;
+    padding: 10px;
+
+   box-shadow: 0px 8px 23px rgba(0,0,0, 0.08);
 }
 
 .tabuleiro.o .celula.celula:not(.x):not(.o):hover::after,
 .tabuleiro.o .celula.celula:not(.x):not(.o):hover::before{
-    background-color: rgba(250, 235, 215, 0.24);
+    background-color:#C4B5FD;
 }
 .tabuleiro.x .celula.celula:not(.x):not(.o):hover::after,
 .tabuleiro.x .celula.celula:not(.x):not(.o):hover::before
 {
-    background-color: #e03e1988;
+    background-color: #0f766e67;
 }
 
 .celula{
@@ -47,6 +62,11 @@ body{
     justify-content: center;
     align-items: center;
     position: relative;
+     transition: 0.2s ease;
+}
+
+.celula:hover{
+    background-color: rgba(255,255,255,0.08);
 }
 
 .celula.o, .celula.x{
@@ -71,11 +91,11 @@ body{
 /* x nas celulas com .x */
 .celula.x::before, .celula.x::after {
     content: "";
-    height: 12%;
-    width: 80%;
-    background-color: #E03E19;
+    height: 10%;
+    width: 70%;
+    background-color: #0f766e;
     position: absolute;
-    box-shadow: 1px 1px 2px #e03e1988;
+    box-shadow: 1px 1px 2px #0f766e6e;
     border-radius: 8px;
 
     /* ::before e ::after são usados para adicionar conteúdo visual antes ou depois do conteúdo real de um elemento.
@@ -102,9 +122,9 @@ body{
     content: "";
     height: 12%;
     width: 80%;
-    background-color: #E03E19;
+    background-color: #0f766e67;
     position: absolute;
-    box-shadow: 1px 1px 2px #e03e1988;
+    box-shadow: 1px 1px 2px #0f766e67;
     border-radius: 8px;
     transform: rotate(45deg); /* Formato da linha do "X" */
 }
@@ -120,10 +140,10 @@ body{
 /* adiciona um o nas classes .o */
 .celula.o::after,.celula.o::before{
     content:"" ;
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
     position: absolute;
-    background-color: antiquewhite;
+    background-color:   #8b5cf6 ;
     border-radius: 50%;
 }
  /* efeito hoover que exibe um o  */
@@ -132,7 +152,7 @@ body{
     width: 70%;
     height: 70%;
     position: absolute;
-    background-color: antiquewhite;
+    background-color:#c4b5fd88;
     border-radius: 50%;
 }
 
@@ -148,24 +168,30 @@ body{
 .mensagem > p{
     width: 80%;
     color: white;
-    font-size: 3.5em;
+    font-size: 2.2rem;
     font-family:VT323;
     text-align: center;
     text-shadow: 1px 1px 2px white;
 }
 
 .mensagem > button{
-    padding: 8px;
+    padding: 10px 18px;
     margin-top: 20px;
     font-size: 1.0em;
-    border:2px solid white;
+    border:none;
     box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.63);
-    border-radius: 4px;
-    background: linear-gradient(to right, #45d09d,#1a503a);
-    
+    border-radius: 10px;
+    background-color: #059669;
+    font-weight: 600;
     color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
+.mensagem > button:hover{
+    transform: translateY(-2px);
+    background-color: #047857;
+}
 .mostrarMsg {
     display: flex;
 }
